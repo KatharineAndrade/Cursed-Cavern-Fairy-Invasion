@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+
 
 import pygame.image
 from pygame import Surface, Rect
