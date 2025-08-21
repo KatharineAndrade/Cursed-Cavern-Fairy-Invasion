@@ -9,6 +9,7 @@ from pygame.surface import Surface
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
+from code.EntityMediator import EntityMediator
 from code.const import WIN_HEIGHT, C_WHITE, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 
 
@@ -44,10 +45,15 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
 
+            # printed text
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 : .1f}s', C_WHITE, (10, 5))
             self.level_text(14, f'fps: {clock.get_fps() : .0f}', C_WHITE, (10, WIN_HEIGHT - 35))
             self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
+
+            # Collisions
+            EntityMediator.verify_collision(entity_list = self.entity_list)
+            EntityMediator.verify_health(entity_list = self.entity_list)
         pass
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
