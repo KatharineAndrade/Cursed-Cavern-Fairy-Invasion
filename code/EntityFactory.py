@@ -9,7 +9,7 @@ from code.const import WIN_WIDTH, WIN_HEIGHT
 class EntityFactory:
 
     @staticmethod
-    def get_entity(entity_name: str, position=(0,0)):
+    def get_entity(entity_name: str):
         match entity_name:
             case 'Level1Bg':
                 list_bg = []
@@ -19,7 +19,7 @@ class EntityFactory:
                 return list_bg
             case 'Level2Bg':
                 list_bg = []
-                for i in range(4):
+                for i in range(7):
                     list_bg.append(Background(f'Level2Bg{i}', (0, 0)))
                     list_bg.append(Background(f'Level2Bg{i}', (WIN_WIDTH, 0)))
                 return list_bg

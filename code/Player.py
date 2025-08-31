@@ -36,7 +36,6 @@ class Player(Entity):
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
 
     def move(self):
-        # Lógica de animação
         now = pygame.time.get_ticks()
         if now - self.last_update_time > self.animation_speed_ms:
             self.last_update_time = now
@@ -45,7 +44,6 @@ class Player(Entity):
             self.image = self.frames[self.current_frame]
             self.rect = self.image.get_rect(center = old_center)
 
-        # Lógica de movimento
         pressed_key = pygame.key.get_pressed()
         if pressed_key[PLAYER_KEY_UP[self.name]] and self.rect.top > 0:
             self.rect.centery -= ENTITY_SPEED[self.name]
