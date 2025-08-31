@@ -3,7 +3,7 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.const import WIN_WIDTH, MENU_OPTION, C_GREY, C_YELLOW, C_GREEN2, C_CYAN, C_DARK_PURPLE
+from code.const import WIN_WIDTH, MENU_OPTION, C_GREY, C_GREEN, C_CYAN, C_LIGHT_PURPLE
 
 
 class Menu:
@@ -19,19 +19,17 @@ class Menu:
         pygame.mixer_music.load('./asset/Menu.mp3')
         pygame.mixer_music.play(-1)
         while True:
-            # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Cursed Cavern:", C_DARK_PURPLE, ((WIN_WIDTH / 2), 90))
+            self.menu_text(50, "Cursed Cavern:", C_LIGHT_PURPLE, ((WIN_WIDTH / 2), 90))
             self.menu_text(65, "Fairy Invasion", C_CYAN, ((WIN_WIDTH / 2), 145))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(25, MENU_OPTION[i], C_GREEN2, ((WIN_WIDTH / 2), 235 + 30 * i))
+                    self.menu_text(25, MENU_OPTION[i], C_GREEN, ((WIN_WIDTH / 2), 235 + 30 * i))
                 else:
                     self.menu_text(25, MENU_OPTION[i], C_GREY, ((WIN_WIDTH / 2), 235 + 30 * i))
             pygame.display.flip()
 
-            # Check for all events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()  # Close Window

@@ -2,7 +2,6 @@ import pygame
 
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
-# Importe as novas constantes que acabamos de criar
 from code.const import ENTITY_SPEED, ENTITY_SHOT_DELAY, \
     ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT, \
     ENEMY_NUM_FRAMES, ENTITY_SHOT_OFFSET
@@ -29,7 +28,7 @@ class Enemy(Entity):
         self.rect = self.image.get_rect(center=position)
 
         self.last_update_time = pygame.time.get_ticks()
-        self.animation_speed_ms = 150 # Ajuste a velocidade da animação da fada aqui
+        self.animation_speed_ms = 150
 
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
 

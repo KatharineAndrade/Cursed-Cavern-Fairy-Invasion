@@ -1,15 +1,15 @@
 # C
 import pygame
 
-
 C_GREY = (140, 160, 180)
 C_YELLOW = (255, 255, 0)
 C_ORANGE = (255, 110, 0)
 C_CYAN = (70, 240, 240)
-C_GREEN2 = (120, 255, 100)
+C_GREEN = (120, 255, 100)
 C_RED = (255, 60, 20)
-C_DARK_PURPLE = (70, 219, 245)
-
+C_LIGHT_PURPLE = (70, 219, 245)
+C_LILAC = (240, 225, 255)
+C_LILAC2 = (230, 178, 255)
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
@@ -31,6 +31,9 @@ ENTITY_SPEED = {
     'Level2Bg1': 1,
     'Level2Bg2': 2,
     'Level2Bg3': 3,
+    'Level2Bg4': 4,
+    'Level2Bg5': 5,
+    'Level2Bg6': 6,
     'Player1': 5,
     'Player1Shot': 3,
     'Player2': 5,
@@ -55,6 +58,9 @@ ENTITY_HEALTH =  {
     'Level2Bg1': 999,
     'Level2Bg2': 999,
     'Level2Bg3': 999,
+    'Level2Bg4': 999,
+    'Level2Bg5': 999,
+    'Level2Bg6': 999,
     'Player1': 300,
     'Player1Shot': 1,
     'Player2': 300,
@@ -79,6 +85,9 @@ ENTITY_DAMAGE = {
     'Level2Bg1': 0,
     'Level2Bg2': 0,
     'Level2Bg3': 0,
+    'Level2Bg4': 0,
+    'Level2Bg5': 0,
+    'Level2Bg6': 0,
     'Player1': 1,
     'Player1Shot': 25,
     'Player2': 1,
@@ -103,6 +112,9 @@ ENTITY_SCORE = {
     'Level2Bg1': 0,
     'Level2Bg2': 0,
     'Level2Bg3': 0,
+    'Level2Bg4': 0,
+    'Level2Bg5': 0,
+    'Level2Bg6': 0,
     'Player1': 0,
     'Player1Shot': 0,
     'Player2': 0,
@@ -158,7 +170,7 @@ SPAWN_TIME = 2000
 
 # T
 TIMEOUT_STEP = 100 #100ms
-TIMEOUT_LEVEL = 10000 # 30s
+TIMEOUT_LEVEL = 30000 # 30s
 
 
 # W
@@ -166,18 +178,18 @@ WIN_WIDTH = 768
 WIN_HEIGHT = 432
 
 # S
-SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
-             'EnterName': (WIN_WIDTH / 2, 80),
-             'Label': (WIN_WIDTH / 2, 90),
-             'Name': (WIN_WIDTH / 2, 110),
-             0: (WIN_WIDTH / 2, 110),
-             1: (WIN_WIDTH / 2, 130),
-             2: (WIN_WIDTH / 2, 150),
-             3: (WIN_WIDTH / 2, 170),
-             4: (WIN_WIDTH / 2, 190),
-             5: (WIN_WIDTH / 2, 210),
-             6: (WIN_WIDTH / 2, 230),
-             7: (WIN_WIDTH / 2, 250),
-             8: (WIN_WIDTH / 2, 270),
-             9: (WIN_WIDTH / 2, 290),
+SCORE_POS = {'Title': (WIN_WIDTH / 2, 70),
+             'EnterName': (WIN_WIDTH / 2, 120),
+             'Label': (WIN_WIDTH / 2, 120),
+             'Name': (WIN_WIDTH / 2, 160),
+             0: (WIN_WIDTH / 2, 150),
+             1: (WIN_WIDTH / 2, 175),
+             2: (WIN_WIDTH / 2, 200),
+             3: (WIN_WIDTH / 2, 225),
+             4: (WIN_WIDTH / 2, 250),
+             5: (WIN_WIDTH / 2, 275),
+             6: (WIN_WIDTH / 2, 300),
+             7: (WIN_WIDTH / 2, 325),
+             8: (WIN_WIDTH / 2, 350),
+             9: (WIN_WIDTH / 2, 375),
              }

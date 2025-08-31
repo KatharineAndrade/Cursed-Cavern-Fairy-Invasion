@@ -8,16 +8,17 @@ from pygame.rect import Rect
 from pygame.surface import Surface
 
 from code.DBProxy import DBProxy
-from code.const import C_CYAN, SCORE_POS, MENU_OPTION
+from code.const import SCORE_POS, MENU_OPTION, C_LILAC, C_LILAC2
 
 
 class Score:
 
     def __init__(self, window: Surface):
         self.window = window
-        self.surf = pygame.image.load('./asset/ScoreBg.png').convert_alpha()
+        original_surf = pygame.image.load('./asset/ScoreBg.png').convert_alpha()
+        screen_size = self.window.get_size()
+        self.surf = pygame.transform.scale(original_surf, screen_size)
         self.rect = self.surf.get_rect(left=0, top=0)
-        pass
 
     def save(self, game_mode: str, player_score: list[int]):
         pygame.mixer_music.load('./asset/Score.mp3')
@@ -26,7 +27,7 @@ class Score:
         name = ''
         while True:
             self.window.blit(source = self.surf, dest = self.rect)
-            self.score_text(48, 'YOU WIN!!', C_CYAN, SCORE_POS['Title'])
+            self.score_text(55, 'YOU WIN!!', C_LILAC2, SCORE_POS['Title'])
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
                 text = 'Enter Player 1 name (4 characters):'
@@ -40,7 +41,7 @@ class Score:
                 else:
                     score = player_score[1]
                     text = 'Enter Player 2 name (4 characters):'
-            self.score_text(20, text, C_CYAN, SCORE_POS['EnterName'])
+            self.score_text(25, text, C_LILAC2, SCORE_POS['EnterName'])
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -54,9 +55,9 @@ class Score:
                     elif event.key == K_BACKSPACE:
                         name = name[:-1]
                     else:
-                        if len(name) <4:
+                        if len(name) < 4:
                             name += event.unicode
-                self.score_text(20, name, C_CYAN, SCORE_POS['Name'])
+                self.score_text(30, name, C_LILAC, SCORE_POS['Name'])
 
             pygame.display.flip()
             pass
@@ -65,15 +66,15 @@ class Score:
         pygame.mixer_music.load('./asset/Score.mp3')
         pygame.mixer_music.play(-1)
         self.window.blit(source = self.surf, dest = self.rect)
-        self.score_text(48, 'TOP 10 SCORE', C_CYAN, SCORE_POS['Title'])
-        self.score_text(20, 'NAME    SCORE     DATE      ', C_CYAN, SCORE_POS['Label'])
+        self.score_text(55, 'TOP 10 SCORE', C_LILAC2, SCORE_POS['Title'])
+        self.score_text(30, 'NAME    SCORE            DATE        ', C_LILAC2, SCORE_POS['Label'])
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top10()
         db_proxy.close()
 
         for player_score in list_score:
             id_, name, score, date = player_score
-            self.score_text(20, f'{name}   {score:05d}    {date}', C_CYAN,
+            self.score_text(25, f'{name}        {score:05d}        {date}', C_LILAC,
                             SCORE_POS[list_score.index(player_score)])
 
         while True:
